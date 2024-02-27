@@ -1,0 +1,36 @@
+Update code in Price.liquid File:
+
+Replace {{ 'products.product.on_sale' | t }} with the following code:
+
+
+-{{ compare_at_price | minus: price | times: 100 | divided_by: compare_at_price }}% OFF
+
+
+Update code in Card-product.liquid File:
+Replace {{- 'products.product.on_sale' | t -}} with the following code:
+
+
+-{{ card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price }}% OFF
+
+
+Add Code in Base.css File
+
+.card__badge .badge{
+    border-radius: 0;
+    font-size: 13px;
+    background-color: red;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .price .price__badge-sale {
+    border-radius: 0;
+    font-size: 13px;
+    background-color: red;
+    font-weight: bold;
+    border: none;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+
