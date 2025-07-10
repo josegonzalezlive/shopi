@@ -1,0 +1,184 @@
+{% comment %}
+  Snippet para la sección de promoción LEYASH™
+  - Carga sus propias fuentes y estilos.
+  - Incluye un script de cuenta regresiva autónomo.
+{% endcomment %}
+
+<!-- Dependencias de Fuentes y Estilos -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+{{ 'leyash-promo-section.css' | asset_url | stylesheet_tag }}
+
+<!-- INICIO DEL CÓDIGO AUTÓNOMO Y SEGURO -->
+<div class="leyash-promo-container">
+    <div class="container">
+
+        <!-- (El resto de las secciones HTML van aquí como antes... ) -->
+        <!-- ❌ SECCIÓN 1: PROBLEMA CON AGITACIÓN -->
+        <div class="section problem-section">
+            <h2>¿Cansada de Luchar Contra el Frizz y el Reloj Cada Mañana?</h2>
+            <p><img alt="Mujer frustrada con su rutina de peinado" src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/crisis-perdida-cabello-mujer-preocupada-estudio-belleza-desordenada-dano-contra-fondo-marron-falla-cuidado-cabello-nina-triste-frustrada-puntas-abiertas-debiles-o-caspa-alopecia-aisla.avif?v=1752100223" loading="lazy"></p>
+            <div class="problem-quote">
+                <p><strong>Si has llegado hasta aquí es porque</strong> tu rutina de peinado es una <strong>carrera contrarreloj</strong>. Tienes el secador en una mano, el cepillo en la otra y la plancha esperando su turno. Después de todo ese esfuerzo, el <strong>frizz aparece, tu pelo queda aplastado</strong> y el peinado no dura, dejándote con una sensación de haber <strong>perdido tiempo y energía</strong>.</p>
+            </div>
+            <p class="problem-warning">
+                <span class="material-symbols-outlined">warning</span>
+                Cada día que pasas luchando con tu pelo, <span style="text-decoration: underline; font-weight: bold;">tu look pierde el brillo y la vitalidad que mereces.</span>
+            </p>
+        </div>
+
+        <!-- ✅ SECCIÓN 2: PRESENTACIÓN DE LA SOLUCIÓN -->
+        <div class="section solution-section">
+            <h2>El Secreto Para Un Pelo De Peluquería En 10 Minutos</h2>
+            <p><img class="product-gif" src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/UGC_VIDEO_GIF.gif?v=1752101445" alt="Cepillo Secador Multifunción en acción" loading="lazy"></p>
+            <div class="solution-box">
+                <p style="font-size: 17px; margin: 0; font-weight: 500;">¡Presentamos el <strong>Cepillo Secador Multifunción</strong>! La herramienta 4 en 1 que <strong>seca, alisa, riza y da un volumen increíble, ¡todo en un solo paso!</strong> Su tecnología iónica transforma tu cabello en minutos, eliminando el frizz y dejándolo suave y brillante.</p>
+            </div>
+        </div>
+
+        <!-- 🚚 DEMOSTRACIÓN DEL PRODUCTO -->
+        <div class="section" style="padding-top: 0; padding-bottom: 20px;">
+            <img src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/styloom-1.gif?v=1752099842" alt="Demostración del cepillo secador" loading="lazy">
+        </div>
+
+        <!-- ⭐ SECCIÓN 3: BENEFICIOS -->
+        <div class="section benefits-section">
+            <h2>Tu Transformación en un Solo Paso</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper icon-bg-1"><span class="material-symbols-outlined">bolt</span></div>
+                    <h3 style="color: #e74c3c;">ACABADO DE SALÓN EN MINUTOS</h3>
+                    <p>Seca, desenreda y peina a la vez, reduciendo tu rutina a la mitad.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper icon-bg-2"><span class="material-symbols-outlined">auto_awesome</span></div>
+                    <h3 style="color: #f39c12;">ADIÓS TOTAL AL FRIZZ</h3>
+                    <p>Su tecnología iónica sella la cutícula para un brillo y suavidad increíbles.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon-wrapper icon-bg-3"><span class="material-symbols-outlined">workspace_premium</span></div>
+                    <h3 style="color: #27ae60;">VOLUMEN Y VERSATILIDAD</h3>
+                    <p>El diseño ovalado crea volumen desde la raíz y te permite alisar o crear ondas.</p>
+                </div>
+            </div>
+            <p style="font-size: 14px; color: #95a5a6; margin-top: 30px;">✓ Potencia 1200W ✓ 3 Ajustes de Temperatura ✓ Mango Ergonómico ✓ Iones Negativos</p>
+        </div>
+        
+        <!-- 👥 SECCIÓN 4: PRUEBA SOCIAL -->
+        <div class="section social-proof-section">
+            <img src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/5-estrellas-todas-5.png?v=1752119570" alt="Valoración de 5 estrellas" style="max-width: 200px; margin-bottom: 20px;" loading="lazy">
+            <h2>Resultados Reales de Mujeres como Tú</h2>
+            <div class="social-proof-grid">
+                <div class="stat-item"><div class="number">5,720+</div><div class="label">Clientes Felices</div></div>
+                <div class="stat-item"><div class="number">4.9★</div><div class="label">Valoración media</div></div>
+                <div class="stat-item"><div class="number">98%</div><div class="label">Lo recomiendan</div></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar"></div>
+                <div class="testimonial-content">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"¡No puedo creerlo! Antes tardaba 30 minutos entre el secador y la plancha. Ahora, en 10 minutos tengo el pelo seco, liso, sin frizz y con un volumen que me encanta. ¡Es la mejor compra que he hecho en años!"</p>
+                    <p class="author">— Laura G., 34 años, Valencia</p>
+                </div>
+            </div>
+            <p><img src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/Captura_de_pantalla_2025-07-09_a_la_s_5.56.19_p.m..png?v=1752098838" alt="Antes y después del uso del cepillo" loading="lazy"></p>
+        </div>
+
+        <!-- ⚡ SECCIÓN 5: OFERTA LIMITADA -->
+        <div class="section cta-section">
+            <div class="cta-box">
+                <h2><span class="material-symbols-outlined">flash_on</span> OFERTA FLASH <br>¡50% DE DESCUENTO HOY!</h2>
+                <div class="stock-alert"><span class="material-symbols-outlined">local_fire_department</span>¡Últimas 17 unidades a este precio!</div>
+                
+                <!-- TEMPORIZADOR DINÁMICO MEJORADO -->
+                <div id="leyash-timer-wrapper">
+                    <div class="timer-label">⏰ La oferta termina en:</div>
+                    <div class="timer-grid" id="timer-active">
+                        <div class="timer-unit"><div class="time-value" id="countdown-days">00</div><div class="time-label">Días</div></div>
+                        <div class="timer-unit"><div class="time-value" id="countdown-hours">00</div><div class="time-label">Horas</div></div>
+                        <div class="timer-unit"><div class="time-value" id="countdown-minutes">00</div><div class="time-label">Min</div></div>
+                        <div class="timer-unit"><div class="time-value" id="countdown-seconds">00</div><div class="time-label">Seg</div></div>
+                    </div>
+                    <div class="timer-expired-message" id="timer-expired">¡Lo sentimos, esta oferta ha expirado!</div>
+                </div>
+                
+                <div class="price-section">
+                    <div style="font-size: 18px; color: #7f8c8d;">Precio normal: <span class="price-old">79.99€</span></div>
+                    <div class="price-new">SÓLO 39.99€</div>
+                    <div class="price-save">¡Ahorras 40€!</div>
+                </div>
+                
+                <a href="#" class="cta-button">¡QUIERO MI 50% DE DESCUENTO!</a>
+                <div class="cta-subtext">Pago seguro y envío en 24h</div>
+
+                <div class="payment-info">
+                    <h3><span class="material-symbols-outlined" style="font-weight: 600;">lock</span> Compra con Total Confianza</h3>
+                    <ul>
+                        <li><span class="material-symbols-outlined">payments</span> Paga al recibirlo en casa si lo prefieres</li>
+                        <li><span class="material-symbols-outlined">local_shipping</span> Envío gratuito en 24-48h</li>
+                        <li><span class="material-symbols-outlined">ring_volume</span> Confirmamos tu pedido por teléfono</li>
+                        <li><span class="material-symbols-outlined">shield_with_heart</span> Garantía de devolución 30 días</li>
+                        <li><span class="material-symbols-outlined">inventory_2</span> Stock limitado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- FIN DEL CÓDIGO AUTÓNOMO Y SEGURO -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Para evitar que el script se rompa si este elemento no existe en la página
+    const timerWrapper = document.getElementById('leyash-timer-wrapper');
+    if (!timerWrapper) {
+        return;
+    }
+
+    // --- CONFIGURACIÓN DEL TEMPORIZADOR ---
+    // Modifica estos valores para cambiar la duración de la cuenta regresiva.
+    const countdownHours = 1;   // Horas para la cuenta regresiva
+    const countdownMinutes = 0; // Minutos adicionales
+    const countdownSeconds = 0; // Segundos adicionales
+    // ------------------------------------
+
+    const countdownDuration = (countdownHours * 3600 + countdownMinutes * 60 + countdownSeconds) * 1000;
+    const endTime = new Date().getTime() + countdownDuration;
+
+    const daysEl = document.getElementById('countdown-days');
+    const hoursEl = document.getElementById('countdown-hours');
+    const minutesEl = document.getElementById('countdown-minutes');
+    const secondsEl = document.getElementById('countdown-seconds');
+    const activeTimerEl = document.getElementById('timer-active');
+    const expiredMessageEl = document.getElementById('timer-expired');
+
+    const timerInterval = setInterval(updateCountdown, 1000);
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            activeTimerEl.style.display = 'none';
+            expiredMessageEl.style.display = 'block';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Actualiza el HTML con el formato de dos dígitos (ej: 09, 08, 07)
+        daysEl.innerHTML = String(days).padStart(2, '0');
+        hoursEl.innerHTML = String(hours).padStart(2, '0');
+        minutesEl.innerHTML = String(minutes).padStart(2, '0');
+        secondsEl.innerHTML = String(seconds).padStart(2, '0');
+    }
+});
+</script>
