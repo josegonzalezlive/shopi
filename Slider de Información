@@ -1,0 +1,348 @@
+<!--
+  Slider de Información Profesional v2.1
+  - MEJORA: Pausa inteligente al pasar el ratón o enfocar con el teclado.
+  - MEJORA: Accesibilidad (ARIA) y respeto por 'prefers-reduced-motion'.
+  - MEJORA: Animación de entrada para el texto de envío calculado.
+  - MEJORA: Diseño robusto en pantallas muy pequeñas.
+-->
+
+<style>
+  /* --- Variables de Diseño (sin cambios) --- */
+  :root {
+    --brand-color-primary: #007A7A;
+    --brand-color-accent: #FFC107;
+    --text-color-dark: #212529;
+    --text-color-light: #6c757d;
+    --background-gradient: linear-gradient(135deg, #ffffff 0%, #f7f9fa 100%);
+    --container-border-color: #e9ecef;
+  }
+
+  /* --- Contenedor Principal (sin cambios) --- */
+  .pro-info-slider-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    background: var(--background-gradient);
+    border-radius: 16px;
+    border: 1px solid var(--container-border-color);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    -webkit-font-smoothing: antialiased;
+    outline: none; /* Para que el focus no muestre un borde por defecto */
+  }
+
+  /* --- Wrapper que se mueve (sin cambios) --- */
+  .pro-info-slider-wrapper {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  /* --- Estilos de cada Slide (sin cambios) --- */
+  .pro-info-slider-slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 28px 35px;
+    min-height: 120px;
+  }
+
+  /* Contenido del slide con animación de entrada (sin cambios) */
+  .slide-content-wrapper {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+  }
+  .pro-info-slider-slide.active-slide .slide-content-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Estilos de los Slides (sin cambios significativos) --- */
+  .slide-review-content {
+    display: flex; align-items: center; gap: 22px; width: 100%;
+  }
+  .review-image {
+    width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .review-text-container {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .review-stars {
+    display: flex; gap: 4px; color: var(--brand-color-accent);
+  }
+  .review-stars svg { width: 20px; height: 20px; }
+  .review-quote {
+    font-size: 17px; font-weight: 500; font-style: italic; color: var(--text-color-dark); line-height: 1.5; margin: 0;
+  }
+  /* MEJORA: Guion largo (em-dash) estilizado con pseudo-elemento */
+  .review-author {
+    font-size: 15px; font-weight: 600; color: var(--text-color-light); margin: 0;
+  }
+  .review-author::before {
+    content: "— ";
+  }
+
+  /* --- Slide 2: Envío (con nuevas animaciones) --- */
+  #shipping-estimate {
+    display: flex; align-items: center; gap: 15px; width: 100%; font-size: 17px; font-weight: 500; color: var(--text-color-dark);
+  }
+  #shipping-estimate strong { color: var(--brand-color-primary); font-weight: 700; }
+  .shipping-icon-wrapper svg {
+    width: 36px; height: 36px; color: var(--brand-color-primary); stroke-width: 1.5;
+  }
+  
+  /* MEJORA: Animación para el texto de envío al actualizarse */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  #shipping-text.content-visible {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+  #shipping-text.content-loading {
+    opacity: 0.5; /* Atenúa el texto mientras se calcula */
+    transition: opacity 0.3s;
+  }
+
+  /* --- Puntos de Navegación (con mejora en hover) --- */
+  .pro-info-slider-dots {
+    position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;
+  }
+  .dot {
+    width: 9px; height: 9px; border-radius: 50%; background-color: #ccc; cursor: pointer; border: none; padding: 0; transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .dot:hover {
+    background-color: #aaa;
+    transform: scale(1.2); /* MEJORA: Efecto táctil al pasar el ratón */
+  }
+  .dot.active {
+    background-color: var(--brand-color-primary); width: 25px; border-radius: 10px;
+  }
+
+  /* --- Diseño Responsive (con mejora para pantallas pequeñas) --- */
+  @media (max-width: 600px) {
+    .pro-info-slider-slide { padding: 20px; min-height: 130px; }
+    .slide-review-content { gap: 15px; }
+    .review-image { width: 55px; height: 55px; }
+    .review-quote, #shipping-estimate { font-size: 15px; }
+    .review-author { font-size: 13px; }
+    .review-stars svg { width: 16px; height: 16px; }
+    .shipping-icon-wrapper svg { width: 30px; height: 30px; }
+  }
+  /* MEJORA: En pantallas muy pequeñas, la review se apila verticalmente */
+  @media (max-width: 420px) {
+    .slide-review-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
+  }
+</style>
+
+<!-- Importar la fuente 'Inter' (sin cambios) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- MEJORA: Atributos de accesibilidad añadidos al contenedor -->
+<div class="pro-info-slider-container" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Información destacada del producto">
+  <div class="pro-info-slider-wrapper">
+    
+    <!-- Slide 1: Review -->
+    <div class="pro-info-slider-slide" role="group" aria-roledescription="slide">
+      <div class="slide-content-wrapper">
+        <div class="slide-review-content">
+          <img class="review-image" src="https://cdn.shopify.com/s/files/1/0931/3484/8330/files/9a9f1982-3487-9d73-dda2-5977f1400f5d.jpg?v=1752105870" alt="Cliente satisfecha">
+          <div class="review-text-container">
+            <div class="review-stars">
+              <!-- SVG Icons -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="review-quote">"Transformó mi rutina de peinado en minutos"</p>
+            <p class="review-author">Laura Méndez</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Estimación de Envío -->
+    <div class="pro-info-slider-slide" role="group" aria-roledescription="slide">
+      <div class="slide-content-wrapper">
+        <div id="shipping-estimate">
+            <div class="shipping-icon-wrapper">
+              <!-- SVG Truck Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V14.25m-17.25 4.5v-9m17.25 9v-9m-17.25-9L5.625 6H16.5l3.375 2.25m-17.25-9v9m17.25-9v9" /></svg>
+            </div>
+            <!-- MEJORA: Atributos ARIA para que el lector de pantalla anuncie el cambio -->
+            <span id="shipping-text" class="content-loading" aria-live="polite" aria-atomic="true">
+              Calculando envío a tu ubicación...
+            </span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="pro-info-slider-dots"></div>
+</div>
+
+<script>
+  // Script para el Slider Profesional v2.1
+  document.addEventListener('DOMContentLoaded', function() {
+    const sliderContainer = document.querySelector('.pro-info-slider-container');
+    if (!sliderContainer) return;
+    
+    const wrapper = sliderContainer.querySelector('.pro-info-slider-wrapper');
+    const slides = Array.from(sliderContainer.querySelectorAll('.pro-info-slider-slide'));
+    const dotsContainer = sliderContainer.querySelector('.pro-info-slider-dots');
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let slideInterval;
+    let isPaused = false;
+
+    // Si solo hay un slide, no necesitamos controles ni autoplay
+    if (totalSlides <= 1) {
+      dotsContainer.style.display = 'none';
+      return;
+    }
+
+    // Creación de los puntos de navegación
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('dot');
+      dot.setAttribute('aria-label', `Ir a la diapositiva ${i + 1}`);
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        resetInterval(); // Reinicia el temporizador tras la interacción manual
+      });
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll('.dot');
+    
+    function updateActiveStates() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active-slide', index === currentIndex);
+        // Atributo ARIA para lectores de pantalla
+        slide.setAttribute('aria-hidden', index !== currentIndex);
+      });
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateActiveStates();
+    }
+    
+    function nextSlide() {
+      const newIndex = (currentIndex + 1) % totalSlides;
+      goToSlide(newIndex);
+    }
+
+    // --- MEJORAS DE UX Y ACCESIBILIDAD ---
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function startInterval() {
+      // No iniciar autoplay si el usuario prefiere movimiento reducido
+      if (prefersReducedMotion) return;
+      
+      isPaused = false;
+      slideInterval = setInterval(nextSlide, 5000); // Aumentamos tiempo para mejor lectura
+    }
+    
+    function pauseInterval() {
+        isPaused = true;
+        clearInterval(slideInterval);
+    }
+
+    function resetInterval() {
+      pauseInterval();
+      startInterval();
+    }
+
+    // Pausar al pasar el ratón o enfocar con el teclado
+    sliderContainer.addEventListener('mouseenter', pauseInterval);
+    sliderContainer.addEventListener('focusin', pauseInterval);
+
+    // Reanudar cuando el ratón sale o se pierde el foco
+    sliderContainer.addEventListener('mouseleave', startInterval);
+    sliderContainer.addEventListener('focusout', startInterval);
+
+    // Inicialización del slider
+    goToSlide(0);
+    startInterval();
+  });
+  
+  // Script de Geolocalización Mejorado para Animación
+  (function() {
+    const shippingTextElement = document.getElementById('shipping-text');
+    if (!shippingTextElement) return;
+
+    fetch('https://ipapi.co/json/')
+      .then(response => {
+        if (!response.ok) throw new Error('Respuesta de API no válida');
+        return response.json();
+      })
+      .then(data => {
+        const ciudad = data.city || 'tu ubicación';
+        const region = data.region || '';
+        const countryCode = data.country_code || '';
+        // ... (Toda la lógica de cálculo de fecha se mantiene igual)
+        let diasEnvio;
+        let mensajePrincipal;
+
+        if (countryCode === 'PT' && (region.includes('Madeira') || region.includes('Azores'))) {
+          diasEnvio = 5;
+          mensajePrincipal = 'Envío a Madeira y Azores';
+        } else if (countryCode === 'ES' && (region.includes('Canarias') || region.includes('Baleares'))) {
+          diasEnvio = 3;
+          mensajePrincipal = 'Envío a Islas';
+        } else if (countryCode === 'ES' || countryCode === 'PT') {
+          diasEnvio = 1;
+          mensajePrincipal = 'Envío Express 24/48h';
+        } else {
+          diasEnvio = 4;
+          mensajePrincipal = 'Envío internacional';
+        }
+        
+        const hoy = new Date();
+        let diasLaborablesContados = 0;
+        let fechaEntrega = new Date(hoy);
+        let horaActual = hoy.getHours();
+        if (horaActual >= 14) fechaEntrega.setDate(fechaEntrega.getDate() + 1);
+
+        while (diasLaborablesContados < diasEnvio) {
+          const diaDeLaSemana = fechaEntrega.getDay();
+          if (diaDeLaSemana !== 0 && diaDeLaSemana !== 6) diasLaborablesContados++;
+          if (diasLaborablesContados < diasEnvio) fechaEntrega.setDate(fechaEntrega.getDate() + 1);
+        }
+        const fechaFormateada = fechaEntrega.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+        
+        // MEJORA: Aplicar el texto con animación de entrada
+        const newText = `<strong>${mensajePrincipal}.</strong> Pídelo ya y recíbelo el <strong>${fechaFormateada}</strong> en ${ciudad}.`;
+        updateShippingText(newText);
+      })
+      .catch(error => {
+        console.error('Error al obtener la geolocalización:', error);
+        const fallbackText = '<strong>Envío Express 24/48h en la Península.</strong> ¡Pídelo antes de las 14:00h y recíbelo mañana!';
+        updateShippingText(fallbackText);
+      });
+      
+    function updateShippingText(htmlContent) {
+        shippingTextElement.classList.remove('content-visible');
+        shippingTextElement.innerHTML = htmlContent;
+        // La clase 'content-loading' se elimina automáticamente por 'content-visible'
+        shippingTextElement.classList.add('content-visible');
+    }
+  })();
+</script>
