@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Estilos para la sección de promoción LEYASH™
+   Archivo: leyash-promo-section.css
+   ========================================================================== */
+
+.leyash-promo-container {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #3d4752;
+    background-color: #f7f8fa;
+    padding: 30px 0;
+}
+.leyash-promo-container .container {
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+.leyash-promo-container .section {
+    padding: 40px 30px;
+    text-align: center;
+}
+.leyash-promo-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.leyash-promo-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 25px;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+.leyash-promo-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+.leyash-promo-container p {
+    font-size: 17px;
+    color: #5a6978;
+    margin: 15px 0;
+}
+.leyash-promo-container .material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 1.3em;
+}
+.leyash-promo-container a {
+    text-decoration: none;
+}
+
+/* --- Secciones específicas --- */
+.leyash-promo-container .problem-section { border-bottom: 1px solid #eef2f5; }
+.leyash-promo-container .problem-quote { background: #fff6f5; padding: 25px; border-left: 5px solid #ff6b6b; border-radius: 8px; text-align: left; margin: 30px 0; }
+.leyash-promo-container .problem-warning { font-size: 15px; color: #7f8c8d; }
+.leyash-promo-container .problem-warning .material-symbols-outlined { color: #ff6b6b; }
+.leyash-promo-container .solution-section .product-gif { box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+.leyash-promo-container .solution-box { background: #f0faf5; padding: 25px; border-radius: 8px; margin: 30px 0; border-left: 5px solid #27ae60; text-align: left; }
+.leyash-promo-container .benefits-section { background-color: #f7f8fa; }
+.leyash-promo-container .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-top: 40px; }
+.leyash-promo-container .benefit-card { background: #fff; border: 1px solid #e5e5e5; padding: 30px; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.leyash-promo-container .benefit-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.leyash-promo-container .benefit-icon-wrapper { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; margin-bottom: 20px; }
+.leyash-promo-container .benefit-icon-wrapper .material-symbols-outlined { font-size: 32px; }
+.leyash-promo-container .icon-bg-1 { background-color: #fff0f0; color: #e74c3c; }
+.leyash-promo-container .icon-bg-2 { background-color: #fff8e1; color: #f39c12; }
+.leyash-promo-container .icon-bg-3 { background-color: #e8f5e9; color: #27ae60; }
+.leyash-promo-container .benefit-card p { font-size: 15px; color: #7f8c8d; }
+.leyash-promo-container .social-proof-grid { display: flex; justify-content: space-around; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
+.leyash-promo-container .stat-item .number { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 800; color: #e74c3c; }
+.leyash-promo-container .stat-item .label { font-size: 13px; color: #7f8c8d; text-transform: uppercase; letter-spacing: 1.5px; }
+.leyash-promo-container .testimonial-card { display: flex; align-items: flex-start; gap: 20px; background: #f8f9fa; border-left: 5px solid #3498db; padding: 25px; margin: 30px 0; border-radius: 8px; text-align: left; }
+.leyash-promo-container .testimonial-avatar { flex-shrink: 0; width: 50px; height: 50px; border-radius: 50%; background-color: #e0e0e0; background-image: url('https://fonts.gstatic.com/s/i/materialicons/person/v11/24px.svg'); background-size: 60%; background-position: center; background-repeat: no-repeat; }
+.leyash-promo-container .testimonial-content .stars { color: #f1c40f; font-size: 16px; margin-bottom: 10px; }
+.leyash-promo-container .testimonial-content .quote { font-size: 16px; font-style: italic; margin: 0 0 15px; color: #2c3e50; }
+.leyash-promo-container .testimonial-content .author { font-size: 14px; color: #7f8c8d; font-weight: 700; }
+.leyash-promo-container .cta-box { border-radius: 12px; padding: 30px; margin: 20px 0; background: linear-gradient(180deg, #ffffff 0%, #fffaf8 100%); border-top: 5px solid #e74c3c; box-shadow: 0 10px 30px rgba(231, 76, 60, 0.1); }
+.leyash-promo-container .cta-box h2 { font-size: 36px; }
+.leyash-promo-container .stock-alert { background: #e74c3c; color: white; padding: 12px; border-radius: 50px; margin: 25px auto; font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
+.leyash-promo-container .timer-label { font-size: 18px; font-weight: 600; color: #2c3e50; margin-bottom: 15px; }
+.leyash-promo-container .timer-grid { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+.leyash-promo-container .timer-unit { background-color: #2c3e50; color: white; padding: 10px 15px; border-radius: 8px; width: 80px; }
+.leyash-promo-container .timer-unit .time-value { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: bold; }
+.leyash-promo-container .timer-unit .time-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
+.leyash-promo-container .price-section { margin: 35px 0; }
+.leyash-promo-container .price-old { font-size: 22px; text-decoration: line-through; color: #95a5a6; }
+.leyash-promo-container .price-new { font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 800; color: #e74c3c; margin: 5px 0; }
+.leyash-promo-container .price-save { font-size: 18px; color: #27ae60; font-weight: 700; background: #e8f5e9; padding: 5px 12px; border-radius: 20px; display: inline-block; }
+.leyash-promo-container .cta-button { background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; padding: 20px 40px; border-radius: 12px; font-size: 22px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3); border: none; cursor: pointer; }
+.leyash-promo-container .cta-button:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 12px 25px rgba(39, 174, 96, 0.4); }
+.leyash-promo-container .cta-subtext { font-size: 12px; color: #7f8c8d; margin-top: 10px; }
+.leyash-promo-container .payment-info { background: #f8f9fa; padding: 25px; border-radius: 12px; margin-top: 30px; text-align: left; }
+.leyash-promo-container .payment-info h3 { font-family: 'Montserrat', sans-serif; display: flex; align-items: center; gap: 10px; color: #2c3e50; margin: 0 0 15px; }
+.leyash-promo-container .payment-info ul { list-style-type: none; padding: 0; margin: 0; font-size: 15px; color: #5a6978; line-height: 2; }
+.leyash-promo-container .payment-info li { display: flex; align-items: center; gap: 12px; }
+.leyash-promo-container .payment-info .material-symbols-outlined { color: #27ae60; font-size: 22px; }
+@media (max-width: 600px) {
+    .leyash-promo-container { padding: 0; }
+    .leyash-promo-container .container { margin: 0; border-radius: 0; }
+    .leyash-promo-container .section { padding: 30px 20px; }
+    .leyash-promo-container h2 { font-size: 26px; }
+    .leyash-promo-container .cta-box h2 { font-size: 28px; }
+    .leyash-promo-container .cta-button { font-size: 18px; width: 100%; box-sizing: border-box; }
+    .leyash-promo-container .timer-unit { width: 70px; padding: 8px 10px; }
+    .leyash-promo-container .timer-unit .time-value { font-size: 28px; }
+}
+/* Estilo para el mensaje de oferta expirada */
+.leyash-promo-container .timer-expired-message {
+    display: none; /* Oculto por defecto */
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
