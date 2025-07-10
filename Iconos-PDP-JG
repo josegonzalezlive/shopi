@@ -1,0 +1,154 @@
+<!--
+  Lista de Características Profesionales v2.0
+  - Diseño premium con iconos encapsulados y jerarquía de texto.
+  - Estructura semántica con <ul> y <li> para mejor accesibilidad y SEO.
+  - Animación de entrada escalonada para un efecto dinámico y moderno.
+  - Tipografía 'Poppins' para una apariencia limpia y legible.
+  - Variables CSS para una personalización de marca sencilla.
+-->
+
+<style>
+  /* --- Variables de Diseño: ¡Personaliza tu marca aquí! --- */
+  :root {
+    --feature-list-primary-color: #007A7A; /* Color de acento principal */
+    --feature-list-icon-bg: #e6f2f2;      /* Fondo suave para el círculo del icono */
+    --feature-list-text-dark: #FFFFF;    /* Negro suave para el título */
+    --feature-list-text-light: #FFFFF;   /* Gris para la descripción */
+    --feature-list-font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* --- Tipografía: Importamos una fuente limpia y moderna --- */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* --- Contenedor Principal: Uso de UL para semántica --- */
+  .professional-feature-list {
+    font-family: var(--feature-list-font);
+    padding: 20px 0;
+    margin: 0;
+    list-style: none; /* Quitamos los puntos de la lista */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* MEJORA: `gap` es más moderno y limpio que `margin-bottom` */
+  }
+
+  /* --- Animación de Entrada --- */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --- Elemento de la Lista: Uso de LI --- */
+  .professional-feature-item {
+    display: flex;
+    align-items: flex-start; /* Alineamos arriba para textos de varias líneas */
+    gap: 18px; /* Espacio entre el icono y el bloque de texto */
+    
+    /* MEJORA: Animación de entrada escalonada */
+    opacity: 0; /* Empieza invisible */
+    animation: fade-in-up 0.6s ease-out forwards;
+    transition: transform 0.3s ease;
+  }
+
+  .professional-feature-item:hover {
+      transform: scale(1.03); /* Efecto sutil al pasar el ratón */
+  }
+
+  /* MEJORA: Animación escalonada para cada elemento */
+  .professional-feature-item:nth-child(2) { animation-delay: 0.15s; }
+  .professional-feature-item:nth-child(3) { animation-delay: 0.3s; }
+  .professional-feature-item:nth-child(4) { animation-delay: 0.45s; }
+
+  /* --- MEJORA: Círculo contenedor para el Icono --- */
+  .icon-wrapper {
+    flex-shrink: 0; /* Evita que el círculo se encoja */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--feature-list-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 122, 122, 0.08);
+  }
+
+  .icon-wrapper .material-symbols-outlined {
+    font-size: 26px;
+    color: var(--feature-list-primary-color);
+  }
+
+  /* --- MEJORA: Jerarquía de Texto (Título y Descripción) --- */
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Pequeño espacio entre título y descripción */
+  }
+
+  .item-heading {
+    font-size: 16px;
+    font-weight: 600; /* Más grueso para el título */
+    color: var(--feature-list-text-dark);
+    line-height: 1.4;
+  }
+  
+  .item-description {
+    font-size: 14px;
+    color: var(--feature-list-text-light);
+    line-height: 1.5;
+  }
+
+</style>
+
+<!-- MEJORA: Se usa una lista <ul> para la estructura semántica -->
+<ul class="professional-feature-list" aria-label="Características principales del producto">
+  
+  <!-- Elemento de la lista 1 -->
+  <li class="professional-feature-item">
+    <div class="icon-wrapper">
+      <span class="material-symbols-outlined">timer</span>
+    </div>
+    <div class="text-content">
+      <span class="item-heading">Estilo de Salón</span>
+      <span class="item-description">En solo 10 minutos</span>
+    </div>
+  </li>
+
+  <!-- Elemento de la lista 2 -->
+  <li class="professional-feature-item">
+    <div class="icon-wrapper">
+      <span class="material-symbols-outlined">shield</span>
+    </div>
+    <div class="text-content">
+      <span class="item-heading">Blindaje Iónico</span>
+      <span class="item-description">Protección total anti-frizz</span>
+    </div>
+  </li>
+
+  <!-- Elemento de la lista 3 -->
+  <li class="professional-feature-item">
+    <div class="icon-wrapper">
+      <span class="material-symbols-outlined">pan_tool_alt</span>
+    </div>
+    <div class="text-content">
+      <span class="item-heading">Tu Salón Portátil</span>
+      <span class="item-description">Toda la potencia en una sola mano</span>
+    </div>
+  </li>
+
+  <!-- Elemento de la lista 4 -->
+  <li class="professional-feature-item">
+    <div class="icon-wrapper">
+      <span class="material-symbols-outlined">tune</span>
+    </div>
+    <div class="text-content">
+      <span class="item-heading">Versatilidad Total</span>
+      <span class="item-description">Crea lisos, ondas o volumen</span>
+    </div>
+  </li>
+
+</ul>
